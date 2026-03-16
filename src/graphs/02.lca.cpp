@@ -26,4 +26,25 @@ int lca(int v, int u) {
 
 //O(1)
 
+vector<vector<int>> gr; 
+vector<int> a,fst,g;
+ 
+void dfs(ll v, ll h){
+    fst[v] = a.size();
+    a.pb(h);
+    g.pb(v);
+    for(auto to : gr[v]){
+        dfs(to,h+1);  
+        a.pb(h);
+        g.pb(v);
+    }
+}
+
+solve(){
+    dfs(0,0);
+    sparse table(a);
+    if(fst[u] > fst[v]) swap(u,v);
+    ll lca = g[table.get_min(fst[u],fst[v])];
+}
+
 

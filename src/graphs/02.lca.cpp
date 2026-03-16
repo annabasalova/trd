@@ -23,3 +23,7 @@ int lca(int v, int u) {
             v = up[v][l];
     return up[v][0];
 }
+
+//O(1)
+
+
